@@ -16,10 +16,18 @@
             color: #333;
         }
         .landing {
-            background: url("images/cover1.jpg") center/cover no-repeat;
-            height: 100vh;
             position: relative;
-            z-index: 1;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .landing video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
         }
         .overlay {
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
@@ -34,6 +42,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            z-index: 1;
         }
         .lobster-font {
             font-family: 'Lobster', cursive;
@@ -81,45 +90,47 @@
         /* Mobile-Friendly Adjustments */
         @media (max-width: 768px) {
             .landing {
-                height: 80vh; /* Reduce height on mobile for better scrolling */
-                background-position: center;
+                height: 70vh; /* Further reduced height on mobile for better scrolling */
             }
             .overlay {
                 padding: 1rem;
             }
             .overlay h1 {
-                font-size: 2.5rem; /* Smaller heading on mobile */
+                font-size: 2.5rem;
             }
             .overlay p {
-                font-size: 1rem; /* Smaller paragraph text */
+                font-size: 1rem;
             }
             .overlay a {
                 font-size: 0.9rem;
                 padding: 0.5rem 1rem;
             }
             .glass-card {
-                padding: 1rem; /* Reduce padding on mobile */
-                min-height: auto; /* Allow cards to shrink */
+                padding: 1rem;
+                min-height: auto;
             }
             .glass-card:hover {
-                transform: none; /* Disable hover effect on mobile */
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Keep default shadow */
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             }
             .nav-link:hover {
-                transform: none; /* Disable scale effect on mobile */
+                transform: none;
             }
             .testimonials-bg {
                 background-position: center;
             }
             .swiper-slide {
-                max-width: 100%; /* Ensure swiper slides take full width on mobile */
+                max-width: 100%;
             }
             .swiper-button-next,
             .swiper-button-prev {
-                display: none; /* Hide navigation buttons on mobile (use swipe instead) */
+                display: none;
             }
         }
         @media (max-width: 640px) {
+            .landing {
+                height: 60vh; /* Even smaller on very small screens */
+            }
             .overlay h1 {
                 font-size: 2rem;
             }
@@ -127,10 +138,10 @@
                 font-size: 0.9rem;
             }
             .glass-card h3 {
-                font-size: 1.1rem; /* Smaller headings in cards */
+                font-size: 1.1rem;
             }
             .glass-card p {
-                font-size: 0.9rem; /* Smaller text in cards */
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -168,9 +179,13 @@
 
     <!-- Landing Page Section -->
     <div class="landing">
+        <video autoplay muted loop playsinline preload="auto" poster="images/cleaning-fallback.jpg">
+            <source src="images/cleaning-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="overlay">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0DB5A4] playfair-font">Ondoa Stains Cleaning Services</h1>
-            <p class="text-lg sm:text-xl md:text-2xl text-[#F15F23] mt-4 playfair-font">Expert Cleaning for a Spotless Space</p>
+            <p class="text-lg sm:text-xl md:text-2xl text-[#F15F23] mt-4 playfair-font">Unleashing the Sparkles ✨</p>
             <p class="text-base sm:text-lg text-white mt-2 roboto-condensed">We clean your bathrooms, tiles, and more—book your service today!</p>
             <a href="#services" class="mt-6 inline-block px-4 sm:px-6 py-2 sm:py-3 bg-[#F15F23] text-white roboto-condensed rounded-lg hover:bg-[#0DB5A4] transition-colors duration-300">Book a Cleaning</a>
         </div>
@@ -357,14 +372,26 @@
                 prevEl: ".swiper-button-prev",
             },
             breakpoints: {
-                0: { slidesPerView: 1, spaceBetween: 10 }, // Mobile (0px and up)
-                640: { slidesPerView: 1, spaceBetween: 15 }, // Small screens
-                1024: { slidesPerView: 2, spaceBetween: 20 } // Desktop
+                0: { slidesPerView: 1, spaceBetween: 10 },
+                640: { slidesPerView: 1, spaceBetween: 15 },
+                1024: { slidesPerView: 2, spaceBetween: 20 }
             }
         });
         document.getElementById("mobile-menu-button").addEventListener("click", function() {
             const menu = document.getElementById("mobile-menu");
-            menu.classList.toggle("hidden");
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    menu.classList.add('opacity-100', 'scale-100');
+                    menu.classList.remove('opacity-0', 'scale-95');
+                }, 10);
+            } else {
+                menu.classList.add('opacity-0', 'scale-95');
+                menu.classList.remove('opacity-100', 'scale-100');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+            }
         });
     </script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
