@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ondoa Stains | Professional Cleaning Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:wght@400;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .landing {
+            background: url("images/cover1.jpg") center/cover no-repeat;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        .overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .lobster-font {
+            font-family: 'Lobster', cursive;
+        }
+        .playfair-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .roboto-condensed {
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(13, 181, 164, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 1rem;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .nav-link:hover {
+            color: #0DB5A4;
+            transform: scale(1.05);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .testimonials-bg {
+            background: url('images/testimonies.jpg') center/cover no-repeat;
+            position: relative;
+        }
+        .testimonials-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+        /* Mobile-Friendly Adjustments */
+        @media (max-width: 768px) {
+            .landing {
+                height: 80vh; /* Reduce height on mobile for better scrolling */
+                background-position: center;
+            }
+            .overlay {
+                padding: 1rem;
+            }
+            .overlay h1 {
+                font-size: 2.5rem; /* Smaller heading on mobile */
+            }
+            .overlay p {
+                font-size: 1rem; /* Smaller paragraph text */
+            }
+            .overlay a {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+            }
+            .glass-card {
+                padding: 1rem; /* Reduce padding on mobile */
+                min-height: auto; /* Allow cards to shrink */
+            }
+            .glass-card:hover {
+                transform: none; /* Disable hover effect on mobile */
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Keep default shadow */
+            }
+            .nav-link:hover {
+                transform: none; /* Disable scale effect on mobile */
+            }
+            .testimonials-bg {
+                background-position: center;
+            }
+            .swiper-slide {
+                max-width: 100%; /* Ensure swiper slides take full width on mobile */
+            }
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none; /* Hide navigation buttons on mobile (use swipe instead) */
+            }
+        }
+        @media (max-width: 640px) {
+            .overlay h1 {
+                font-size: 2rem;
+            }
+            .overlay p {
+                font-size: 0.9rem;
+            }
+            .glass-card h3 {
+                font-size: 1.1rem; /* Smaller headings in cards */
+            }
+            .glass-card p {
+                font-size: 0.9rem; /* Smaller text in cards */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
+            <div class="flex flex-col items-start">
+                <p class="lobster-font text-[#F15F23] text-3xl sm:text-4xl">Ondoa Stains</p>
+                <p class="text-gray-600 text-base sm:text-lg playfair-font">Professional Cleaning Services</p>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <ul class="flex space-x-6 text-[#F15F23] roboto-condensed text-base">
+                    <li><a href="about.html" class="nav-link block py-2 px-3">About</a></li>
+                    <li><a href="#services" class="nav-link block py-2 px-3">Services</a></li>
+                    <li><a href="contact.html" class="nav-link block py-2 px-3">Contact</a></li>
+                </ul>
+            </div>
+            <button id="mobile-menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-200">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div id="mobile-menu" class="hidden absolute right-4 top-16 bg-white shadow-lg w-48 rounded-lg py-2 z-50">
+                <ul class="text-gray-700 roboto-condensed text-base">
+                    <li><a href="about.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">About</a></li>
+                    <li><a href="#services" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Services</a></li>
+                    <li><a href="contact.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page Section -->
+    <div class="landing">
+        <div class="overlay">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0DB5A4] playfair-font">Ondoa Stains Cleaning Services</h1>
+            <p class="text-lg sm:text-xl md:text-2xl text-[#F15F23] mt-4 playfair-font">Expert Cleaning for a Spotless Space</p>
+            <p class="text-base sm:text-lg text-white mt-2 roboto-condensed">We clean your bathrooms, tiles, and more—book your service today!</p>
+            <a href="#services" class="mt-6 inline-block px-4 sm:px-6 py-2 sm:py-3 bg-[#F15F23] text-white roboto-condensed rounded-lg hover:bg-[#0DB5A4] transition-colors duration-300">Book a Cleaning</a>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-teal-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">How Our Service Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-calendar-alt text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">1. Book Your Service</h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Schedule a cleaning at a time that suits you.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-broom text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">2. We Clean Your Space</h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Our team arrives and delivers a thorough cleaning.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-check-circle text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">3. Enjoy the Results</h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Relax in a spotless, fresh environment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services" class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-teal-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Our Cleaning Services</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-broom text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=general" class="underline hover:text-[#0DB5A4] transition-colors duration-300">General Cleaning</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Comprehensive cleaning for your entire bathroom.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-toilet text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=toilet" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Toilet Bowl Cleaning</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We leave your toilet bowl stain-free and germ-free.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-th-large text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=tiles" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Tiles Cleaning</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Our experts restore the shine to your tiles.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-sink text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=sinks" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Sink Basin Cleaning</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We clean your sink to a sparkling finish.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-restroom text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=urinals" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Urinal Cleaning</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We keep your restrooms fresh and hygienic.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-bath text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=bathtubs" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Bathtub Cleaning</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Our team ensures your bathtub is spotless and hygienic.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonials-bg py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-white mb-8 sm:mb-12 playfair-font">What Our Clients Say</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide glass-card p-6 sm:p-8 rounded-xl text-center max-w-md mx-auto flex flex-col justify-between">
+                        <p class="text-gray-200 italic flex-grow text-sm sm:text-base">"The Ondoa Stains team transformed my bathroom in just a few hours! It’s never been cleaner."</p>
+                        <div class="mt-4 sm:mt-6 flex flex-col items-center">
+                            <div class="w-12 sm:w-16 h-12 sm:h-16 overflow-hidden rounded-full border-2 border-[#0DB5A4]">
+                                <img src="images/client-1.jpeg" alt="User 1" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-[#F15F23] font-semibold mt-2 playfair-font text-sm sm:text-base">Christine Mwikali</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide glass-card p-6 sm:p-8 rounded-xl text-center max-w-md mx-auto flex flex-col justify-between">
+                        <p class="text-gray-200 italic flex-grow text-sm sm:text-base">"I run a small school, and Ondoa Stains has been a game-changer. Their cleaning service is top-notch!"</p>
+                        <div class="mt-4 sm:mt-6 flex flex-col items-center">
+                            <div class="w-12 sm:w-16 h-12 sm:h-16 overflow-hidden rounded-full border-2 border-[#0DB5A4]">
+                                <img src="images/client-2.jpeg" alt="User 2" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-[#F15F23] font-semibold mt-2 playfair-font text-sm sm:text-base">Jane Onyancha</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide glass-card p-6 sm:p-8 rounded-xl text-center max-w-md mx-auto flex flex-col justify-between">
+                        <p class="text-gray-200 italic flex-grow text-sm sm:text-base">"Ondoa Stains made my washrooms spotless. Their team was professional and efficient!"</p>
+                        <div class="mt-4 sm:mt-6 flex flex-col items-center">
+                            <div class="w-12 sm:w-16 h-12 sm:h-16 overflow-hidden rounded-full border-2 border-[#0DB5A4]">
+                                <img src="images/client-3.jpeg" alt="User 3" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-[#F15F23] font-semibold mt-2 playfair-font text-sm sm:text-base">Irene Nyaboke</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide glass-card p-6 sm:p-8 rounded-xl text-center max-w-md mx-auto flex flex-col justify-between">
+                        <p class="text-gray-200 italic flex-grow text-sm sm:text-base">"I was amazed at how clean my tiles looked after Ondoa Stains’ service. Highly recommend their team!"</p>
+                        <div class="mt-4 sm:mt-6 flex flex-col items-center">
+                            <div class="w-12 sm:w-16 h-12 sm:h-16 overflow-hidden rounded-full border-2 border-[#0DB5A4]">
+                                <img src="images/client-4.jpg" alt="User 4" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-[#F15F23] font-semibold mt-2 playfair-font text-sm sm:text-base">Emily Nyaguthii</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next text-white"></div>
+                <div class="swiper-button-prev text-white"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-t from-teal-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Contact Us</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass-card p-6 sm:p-8 rounded-xl text-center min-h-[180px] sm:min-h-[200px]">
+                    <div class="text-2xl sm:text-3xl text-green-400 mb-3">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h2 class="text-[#F15F23] text-lg sm:text-xl font-bold playfair-font">Book a Cleaning</h2>
+                    <p class="mt-2 text-gray-600 text-sm sm:text-lg">+254 714 764 260</p>
+                </div>
+                <div class="glass-card p-6 sm:p-8 rounded-xl text-center min-h-[180px] sm:min-h-[200px]">
+                    <div class="text-2xl sm:text-3xl text-green-400 mb-3">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h2 class="text-[#F15F23] text-lg sm:text-xl font-bold playfair-font">Our Location</h2>
+                    <p class="mt-2 text-gray-600 text-sm sm:text-lg">empowermentlighthouse</p>
+                </div>
+                <div class="glass-card p-6 sm:p-8 rounded-xl text-center min-h-[180px] sm:min-h-[200px]">
+                    <div class="text-2xl sm:text-3xl text-green-400 mb-3">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2 class="text-[#F15F23] text-lg sm:text-xl font-bold playfair-font">Email Us</h2>
+                    <p class="mt-2 text-gray-600 text-sm sm:text-lg break-words">ngarisha@empowerntlighthouse.online</p>
+                </div>
+                <div class="glass-card p-6 sm:p-8 rounded-xl text-center min-h-[180px] sm:min-h-[200px]">
+                    <div class="text-2xl sm:text-3xl text-blue-400 mb-3">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h2 class="text-[#F15F23] text-lg sm:text-xl font-bold playfair-font">Service Hours</h2>
+                    <p class="mt-2 text-gray-600 text-sm sm:text-lg">Mon – Fri 10:00 – 23:00</p>
+                    <p class="text-gray-600 text-sm sm:text-lg">Sat-Sun 10:00 – 19:00</p>
+                </div>
+            </div>
+            <div class="flex justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 text-3xl sm:text-4xl">
+                <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SwiperJS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 2,
+            spaceBetween: 20,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                0: { slidesPerView: 1, spaceBetween: 10 }, // Mobile (0px and up)
+                640: { slidesPerView: 1, spaceBetween: 15 }, // Small screens
+                1024: { slidesPerView: 2, spaceBetween: 20 } // Desktop
+            }
+        });
+        document.getElementById("mobile-menu-button").addEventListener("click", function() {
+            const menu = document.getElementById("mobile-menu");
+            menu.classList.toggle("hidden");
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

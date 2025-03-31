@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ondoa Stains</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:wght@400;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to bottom, #e6f4f1, #ffffff);
+            color: #333;
+            min-height: 100vh;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .lobster-font {
+            font-family: 'Lobster', cursive;
+        }
+        .playfair-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .roboto-condensed {
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .nav-link:hover {
+            color: #0DB5A4;
+            transform: scale(1.05);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .contact-section {
+            padding-top: 5rem; /* Space for fixed navbar */
+            padding-bottom: 5rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #0DB5A4;
+            outline: none;
+        }
+        .contact-form button {
+            background: #0DB5A4;
+            color: #fff;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .contact-form button:hover {
+            background: #F15F23;
+            transform: translateY(-2px);
+        }
+        /* Mobile-Friendly Adjustments */
+        @media (max-width: 768px) {
+            .contact-section {
+                padding-top: 4rem; /* Slightly less padding on mobile */
+                padding-bottom: 4rem;
+            }
+            .glass-card {
+                padding: 1.5rem; /* Reduce padding on mobile */
+            }
+            .glass-card:hover {
+                transform: none; /* Disable hover effect on mobile */
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Keep default shadow */
+            }
+            .nav-link:hover {
+                transform: none; /* Disable scale effect on mobile */
+            }
+            .contact-form button {
+                padding: 0.5rem 1rem; /* Smaller button padding on mobile */
+                font-size: 0.9rem;
+            }
+            .contact-form button:hover {
+                transform: none; /* Disable transform on mobile */
+            }
+        }
+        @media (max-width: 640px) {
+            .contact-section h1 {
+                font-size: 2rem; /* Smaller heading on mobile */
+            }
+            .glass-card h2 {
+                font-size: 1.25rem; /* Smaller subheading */
+            }
+            .glass-card h3 {
+                font-size: 1.1rem; /* Smaller sub-subheading */
+            }
+            .glass-card p,
+            .glass-card a {
+                font-size: 0.9rem; /* Smaller text */
+            }
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 0.9rem; /* Smaller input text */
+                padding: 0.5rem 0.75rem; /* Smaller padding for inputs */
+            }
+            .contact-form textarea {
+                padding-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
+            <div class="flex flex-col items-start">
+                <a href="index.html">
+                    <p class="lobster-font text-[#F15F23] text-3xl sm:text-4xl">Ondoa Stains</p>
+                    <p class="text-gray-600 text-base sm:text-lg playfair-font">Professional Cleaning Services</p>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <ul class="flex space-x-6 text-[#F15F23] roboto-condensed text-base">
+                    <li><a href="about.html" class="nav-link block py-2 px-3">About</a></li>
+                    <li><a href="index.html#services" class="nav-link block py-2 px-3">Services</a></li>
+                    <li><a href="contact.html" class="nav-link block py-2 px-3">Contact</a></li>
+                </ul>
+            </div>
+            <button id="mobile-menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-200">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div id="mobile-menu" class="hidden absolute right-4 top-16 bg-white shadow-lg w-48 rounded-lg py-2 z-50">
+                <ul class="text-gray-700 roboto-condensed text-base">
+                    <li><a href="about.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">About</a></li>
+                    <li><a href="index.html#services" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Services</a></li>
+                    <li><a href="contact.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h1 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Let's Talk</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <!-- Contact Info -->
+                <div class="glass-card p-6 sm:p-8">
+                    <h2 class="text-xl sm:text-2xl font-semibold text-[#F15F23] playfair-font mb-4">Get in Touch</h2>
+                    <p class="text-gray-600 text-sm sm:text-lg roboto-condensed mb-6 sm:mb-8">Reach out to our team to learn more about our services.</p>
+
+                    <!-- Email -->
+                    <div class="mb-6 sm:mb-8">
+                        <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">Email</h3>
+                        <div class="flex items-center mt-3 sm:mt-4">
+                            <div class="bg-gray-200 h-8 sm:h-10 w-8 sm:w-10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-[#0DB5A4] text-lg sm:text-xl"></i>
+                            </div>
+                            <a href="mailto:ngarisha@empowerntlighthouse.online" class="text-[#0DB5A4] hover:text-[#F15F23] text-sm sm:text-lg roboto-condensed ml-3 sm:ml-4 transition-colors duration-300">
+                                <strong>ngarisha@empowerntlighthouse.online</strong>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Socials -->
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">Socials</h3>
+                        <div class="flex justify-start gap-4 sm:gap-6 mt-3 sm:mt-4 text-2xl sm:text-3xl">
+                            <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://wa.me/254714764260" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="glass-card p-6 sm:p-8 contact-form">
+                    <form class="space-y-4">
+                        <input type="text" id="name" placeholder="Name" class="w-full text-gray-800 rounded-md py-2 sm:py-2.5 px-3 sm:px-4 text-sm" required/>
+                        <input type="email" id="email" placeholder="Email" class="w-full text-gray-800 rounded-md py-2 sm:py-2.5 px-3 sm:px-4 text-sm" required/>
+                        <input type="text" id="subject" placeholder="Subject" class="w-full text-gray-800 rounded-md py-2 sm:py-2.5 px-3 sm:px-4 text-sm" required/>
+                        <textarea id="message" placeholder="Message" rows="5" class="w-full text-gray-800 rounded-md px-3 sm:px-4 text-sm pt-2 sm:pt-2.5" required></textarea>
+                        <button type="submit" id="send-email" class="w-full flex items-center justify-center gap-2">
+                            <span>Send Email</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.add('opacity-100', 'scale-100');
+                    mobileMenu.classList.remove('opacity-0', 'scale-95');
+                }, 10);
+            } else {
+                mobileMenu.classList.add('opacity-0', 'scale-95');
+                mobileMenu.classList.remove('opacity-100', 'scale-100');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        });
+
+        document.getElementById("send-email").addEventListener("click", function (event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+            const recipient = "ngarisha@empowerntlighthouse.online";
+            const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`)}`;
+            window.location.href = mailtoLink;
+        });
+    </script>
+</body>
+</html>

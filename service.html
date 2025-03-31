@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<!-- Mobile-friendly version deployed on March 31, 2025 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details | Ondoa Stains Cleaning Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to bottom, #e6f4f1, #ffffff);
+            color: #333;
+            min-height: 100vh;
+            padding: 1rem; /* Reduced padding for mobile */
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem; /* Reduced padding for mobile */
+            max-width: 48rem;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .gallery-container {
+            margin-top: 2rem;
+            position: relative;
+        }
+        .slider {
+            position: relative;
+            width: 100%; /* Full width of the container */
+            aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
+            max-width: 600px; /* Max width for larger screens */
+            margin: 0 auto; /* Center the slider */
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: #f9f9f9;
+            padding: 10px;
+        }
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            flex: 0 0 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Default for desktop */
+            border-radius: 0.75rem;
+        }
+        .slide .label {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+        .play-icon {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            width: 40px; /* Slightly larger for mobile */
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .play-icon:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .play-icon::before {
+            content: "▶";
+            color: #fff;
+            font-size: 1.2rem; /* Slightly larger for mobile */
+        }
+        .playing .play-icon::before {
+            content: "⏸";
+        }
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-size: 2rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+        .nav-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .prev {
+            left: 1rem;
+        }
+        .next {
+            right: 1rem;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 600;
+            padding: 1rem 2rem; /* Increased padding for mobile */
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .whatsapp-btn:hover {
+            background: #1ebe52;
+            transform: translateY(-2px);
+        }
+        .playfair-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .roboto-condensed {
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .slider {
+                aspect-ratio: 4 / 3; /* Slightly rectangular for tablets */
+                max-width: 100%; /* Full width on smaller screens */
+            }
+            .slide img {
+                object-fit: cover; /* Fill the slider on mobile */
+            }
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem; /* Smaller title on mobile */
+            }
+            h2 {
+                font-size: 1.5rem; /* Smaller subtitle on mobile */
+            }
+            p {
+                font-size: 1.1rem; /* Larger description text for readability */
+            }
+            .nav-arrow {
+                font-size: 1.5rem; /* Smaller arrows on mobile */
+                padding: 0.3rem;
+            }
+            .play-icon {
+                width: 36px;
+                height: 36px;
+            }
+        }
+        @media (max-width: 480px) {
+            .slider {
+                aspect-ratio: 4 / 3; /* Maintain ratio for mobile */
+                max-width: 100%;
+            }
+            .slide img {
+                object-fit: cover;
+            }
+            .container {
+                padding: 0.75rem;
+            }
+            h1 {
+                font-size: 1.75rem;
+            }
+            h2 {
+                font-size: 1.25rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .whatsapp-btn {
+                padding: 0.75rem 1.5rem; /* Slightly smaller padding for very small screens */
+            }
+            .whatsapp-btn img {
+                width: 24px; /* Larger icon for mobile */
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="service-title" class="text-4xl md:text-5xl font-bold text-[#0DB5A4] mb-6 playfair-font text-center"></h1>
+
+        <div class="gallery-container">
+            <h2 class="text-2xl font-semibold text-[#F15F23] mb-4 playfair-font text-center">Before & After Results</h2>
+            <div class="slider">
+                <div class="slides" id="slides"></div>
+                <div class="nav-arrow prev" onclick="moveSlide(-1)">❮</div>
+                <div class="nav-arrow next" onclick="moveSlide(1)">❯</div>
+                <div class="play-icon" onclick="toggleSlideshow()"></div>
+            </div>
+        </div>
+
+        <p id="service-description" class="text-gray-600 mt-6 text-lg roboto-condensed text-center"></p>
+
+        <div class="flex justify-center mt-8">
+            <a id="whatsapp-btn" href="https://wa.me/254714764260" target="_blank" class="whatsapp-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 mr-2"> 
+                Book This Service
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const services = {
+            urinals: {
+                title: "Urinal Cleaning Service",
+                images: [
+                    { src: "images/t5.jpg", alt: "Before Urinal Cleaning 1", label: "Before" },
+                    { src: "images/t5 (1).jpg", alt: "After Urinal Cleaning 1", label: "After" },
+                ],
+                description: "Our team provides professional urinal cleaning to keep your restrooms fresh and hygienic. Book us today for a spotless result.",
+            },
+            bathtubs: {
+                title: "Bathtub Cleaning Service",
+                images: [
+                    { src: "images/t4.jpg", alt: "Before Bathtub Cleaning 1", label: "Before" },
+                    { src: "images/t4 (1).jpg", alt: "After Bathtub Cleaning 1", label: "After" },
+                ],
+                description: "Let our experts deep-clean your bathtub for a sparkling, germ-free bathing experience.",
+            },
+            tiles: {
+                title: "Tiles Cleaning Service",
+                images: [
+                    { src: "images/t2.jpg", alt: "Before Tiles Cleaning 1", label: "Before" },
+                    { src: "images/t2 (1).jpg", alt: "After Tiles Cleaning 1", label: "After" },
+                    { src: "images/tileb4.jpg", alt: "Before Tiles Cleaning 1", label: "Before" },
+                    { src: "images/tileaftar.jpg", alt: "After Tiles Cleaning 1", label: "After" },
+                ],
+                description: "Our professionals remove stains and restore the shine of your bathroom tiles with care.",
+            },
+            sinks: {
+                title: "Sink Cleaning Service",
+                images: [
+                    { src: "images/down1.jpg", alt: "Before Sink Cleaning 2", label: "Before" },
+                    { src: "images/down2.jpg", alt: "After Sink Cleaning 2", label: "After" },
+                    { src: "images/splitbefore.jpg", alt: "Before Sink Cleaning 2", label: "Before" },
+                    { src: "images/splitafter.jpg", alt: "After Sink Cleaning 2", label: "After" },
+                    { src: "images/up1.jpg", alt: "Before Sink Cleaning 2", label: "Before" },
+                    { src: "images/up2.jpg", alt: "After Sink Cleaning 2", label: "After" },
+                ],
+                description: "We clean your sink to a spotless finish, ensuring a hygienic and fresh space.",
+            },
+            general: {
+                title: "General Cleaning Service",
+                images: [
+                    { src: "images/t6.jpg", alt: "Before General Cleaning 1", label: "Before" },
+                    { src: "images/t6 (1).jpg", alt: "After General Cleaning 1", label: "After" },
+                    { src: "images/t11.jpg", alt: "Before General Cleaning 1", label: "Before" },
+                    { src: "images/t11 (1).jpg", alt: "After General Cleaning 1", label: "After" },
+                ],
+                description: "Our team delivers comprehensive bathroom cleaning for a pristine environment.",
+            },
+            toilet: {
+                title: "Toilet Bowl Cleaning Service",
+                images: [
+                    { src: "images/bowl1.jpg", alt: "Before Toilet Bowl Cleaning 1", label: "Before" },
+                    { src: "images/bowl2.jpg", alt: "After Toilet Bowl Cleaning 1", label: "After" },
+                    { src: "images/dirty1.jpeg", alt: "Before Toilet Bowl Cleaning 2", label: "Before" },
+                    { src: "images/dirty2.jpeg", alt: "After Toilet Bowl Cleaning 2", label: "After" },
+                    { src: "images/beeforo.jpg", alt: "Before Toilet Bowl Cleaning 2", label: "Before" },
+                    { src: "images/iftar.jpg", alt: "After Toilet Bowl Cleaning 2", label: "After" },
+                ],
+                description: "We clean your toilet bowls to leave them stain-free and germ-free, creating a healthier space.",
+            },
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceName = urlParams.get("service");
+
+        const title = document.getElementById("service-title");
+        const slidesContainer = document.getElementById("slides");
+        const description = document.getElementById("service-description");
+        const whatsappBtn = document.getElementById("whatsapp-btn");
+        const slider = document.querySelector(".slider");
+
+        let currentIndex = 0;
+        let slideshowInterval = null;
+        let isPlaying = false;
+
+        function moveSlide(direction) {
+            const slides = document.querySelectorAll(".slide");
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = slides.length - 1;
+            } else if (currentIndex >= slides.length) {
+                currentIndex = 0;
+            }
+
+            const offset = -currentIndex * 100;
+            slidesContainer.style.transform = `translateX(${offset}%)`;
+        }
+
+        function startSlideshow() {
+            if (!isPlaying) {
+                isPlaying = true;
+                slider.classList.add("playing");
+                slideshowInterval = setInterval(() => {
+                    moveSlide(1);
+                }, 1500);
+            }
+        }
+
+        function stopSlideshow() {
+            if (isPlaying) {
+                isPlaying = false;
+                slider.classList.remove("playing");
+                clearInterval(slideshowInterval);
+                slideshowInterval = null;
+            }
+        }
+
+        function toggleSlideshow() {
+            if (isPlaying) {
+                stopSlideshow();
+            } else {
+                startSlideshow();
+            }
+        }
+
+        if (services[serviceName]) {
+            title.textContent = services[serviceName].title;
+            description.textContent = services[serviceName].description;
+            whatsappBtn.href = "https://wa.me/254714764260?text=I'm%20interested%20in%20" + encodeURIComponent(services[serviceName].title);
+
+            const images = services[serviceName].images;
+            images.forEach((image) => {
+                const slide = document.createElement("div");
+                slide.classList.add("slide");
+
+                const img = document.createElement("img");
+                img.src = image.src;
+                img.alt = image.alt;
+
+                const label = document.createElement("span");
+                label.classList.add("label");
+                label.textContent = image.label;
+
+                slide.appendChild(img);
+                slide.appendChild(label);
+                slidesContainer.appendChild(slide);
+            });
+        } else {
+            title.textContent = "Service Not Found";
+            description.textContent = "The requested service does not exist.";
+            slidesContainer.style.display = "none";
+            whatsappBtn.style.display = "none";
+            slider.style.display = "none";
+        }
+    </script>
+</body>
+</html>
