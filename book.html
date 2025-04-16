@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ondoa Stains | Book Your Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:wght@400;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .lobster-font {
+            font-family: 'Lobster', cursive;
+        }
+        .playfair-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .roboto-condensed {
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(13, 181, 164, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 1rem;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .nav-link:hover {
+            color: #0DB5A4;
+            transform: scale(1.05);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .calendar {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .calendar table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .calendar th, .calendar td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+        .calendar th {
+            background-color: #0DB5A4;
+            color: white;
+        }
+        .calendar td {
+            background-color: white;
+            cursor: pointer;
+        }
+        .calendar td:hover:not(.disabled):not(.fully-booked) {
+            background-color: #F15F23;
+            color: white;
+        }
+        .calendar .disabled {
+            background-color: #f3f4f6;
+            color: #d1d5db;
+            cursor: not-allowed;
+        }
+        .calendar .selected {
+            background-color: #F15F23;
+            color: white;
+        }
+        .calendar .fully-booked {
+            background-color: #ff6b6b;
+            color: white;
+            cursor: not-allowed;
+        }
+        /* Mobile-Friendly Adjustments */
+        @media (max-width: 768px) {
+            .glass-card {
+                padding: 1rem;
+                min-height: auto;
+            }
+            .glass-card:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .nav-link:hover {
+                transform: none;
+            }
+            .calendar th, .calendar td {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .calendar th, .calendar td {
+                padding: 6px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
+            <div class="flex flex-col items-start">
+                <p class="lobster-font text-[#F15F23] text-3xl sm:text-4xl">Ondoa Stains</p>
+                <p class="text-gray-600 text-base sm:text-lg playfair-font">Professional Stain Removal Services</p>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <ul class="flex space-x-6 text-[#F15F23] roboto-condensed text-base">
+                    <li><a href="about.html" class="nav-link block py-2 px-3">About</a></li>
+                    <li><a href="index.html#services" class="nav-link block py-2 px-3">Services</a></li>
+                    <li><a href="contact.html" class="nav-link block py-2 px-3">Contact</a></li>
+                </ul>
+            </div>
+            <button id="mobile-menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-200">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div id="mobile-menu" class="hidden absolute right-4 top-16 bg-white shadow-lg w-48 rounded-lg py-2 z-50">
+                <ul class="text-gray-700 roboto-condensed text-base">
+                    <li><a href="about.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">About</a></li>
+                    <li><a href="index.html#services" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Services</a></li>
+                    <li><a href="contact.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Book Your Service Section -->
+    <div class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-teal-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Book Your Service</h2>
+            <div class="grid grid-cols-1 gap-6 sm:gap-8">
+                <!-- Booking Card -->
+                <div class="glass-card p-4 sm:p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-clipboard-list text-3xl sm:text-4xl text-[#F15F23] mr-4"></i>
+                        <h3 id="card-title" class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">Choose Your Service</h3>
+                    </div>
+                    <p id="card-description" class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Select a stain removal service that suits your needs.</p>
+                    <a id="card-button" href="index.html#services" class="mt-6 inline-block w-full text-center px-4 py-2 bg-[#F15F23] text-white roboto-condensed rounded-lg hover:bg-[#0DB5A4] transition-colors duration-300">View Services</a>
+                </div>
+                <!-- Calendar -->
+                <div class="glass-card p-4 sm:p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-calendar-alt text-3xl sm:text-4xl text-[#F15F23] mr-4"></i>
+                        <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">Schedule a Service</h3>
+                    </div>
+                    <p id="calendar-status" class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Select a date and time slot below.</p>
+                    <div class="calendar mt-4">
+                        <div class="flex justify-between mb-4">
+                            <button id="prevMonth" class="text-[#F15F23] hover:text-[#0DB5A4]"><i class="fas fa-chevron-left"></i></button>
+                            <h4 id="monthYear" class="text-lg font-semibold text-[#0DB5A4] playfair-font"></h4>
+                            <button id="nextMonth" class="text-[#F15F23] hover:text-[#0DB5A4]"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Sun</th>
+                                    <th>Mon</th>
+                                    <th>Tue</th>
+                                    <th>Wed</th>
+                                    <th>Thu</th>
+                                    <th>Fri</th>
+                                    <th>Sat</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendarBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4">
+                        <label for="timeSlot" class="text-gray-600 roboto-condensed text-sm sm:text-base">Select Time Slot:</label>
+                        <select id="timeSlot" class="mt-2 w-full p-2 border rounded-lg text-gray-600 roboto-condensed" disabled>
+                            <option value="">Select a date first</option>
+                        </select>
+                    </div>
+                    <button id="bookService" class="mt-6 w-full px-4 py-2 bg-[#F15F23] text-white roboto-condensed rounded-lg hover:bg-[#0DB5A4] transition-colors duration-300" disabled>Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-t from-teal-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Contact Us</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass-card p-6 sm:p-8 rounded-xl text-center min-h-[180px] sm:min-h-[200px]">
+                    <div class="text-2xl sm:text-3xl text-green-400 mb-3">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h2 class="text-[#F15F23] text-lg sm:text-xl font-bold playfair-font">Book a Cleaning</h2>
+                    <p class="mt-2 text-gray-600 text-sm sm:text-lg">+254 714 764 260</p>
+                </div>
+                <div class="glass-card p-6 sm:p-8 rounded-xl text-center min-h-[180px] sm:min-h-[200px]">
+                    <div class="text-2xl sm:text-3xl text-green-400 mb-3">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h2 class="text-[#F15F23] text-lg sm:text-xl font-bold playfair-font">Our Location</h2>
+                    <p class="mt-2 text-gray-600 text-sm sm:text-lg">empowermentlighthouse</p>
+                </div>
+                <div class="glass-card p-6 sm:p-8 rounded-xl text-center min-h-[180px] sm:min-h-[200px]">
+                    <div class="text-2xl sm:text-3xl text-green-400 mb-3">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2 class="text-[#F15F23] text-lg sm:text-xl font-bold playfair-font">Email Us</h2>
+                    <p class="mt-2 text-gray-600 text-sm sm:text-lg break-words">ngarisha@empowerntlighthouse.online</p>
+                </div>
+                <div class="glass-card p-6 sm:p-8 rounded-xl text-center min-h-[180px] sm:min-h-[200px]">
+                    <div class="text-2xl sm:text-3xl text-blue-400 mb-3">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h2 class="text-[#F15F23] text-lg sm:text-xl font-bold playfair-font">Service Hours</h2>
+                    <p class="mt-2 text-gray-600 text-sm sm:text-lg">Mon – Fri 10:00 – 23:00</p>
+                    <p class="mt-2 text-gray-600 text-sm sm:text-lg">Sat-Sun 10:00 – 19:00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById("mobile-menu-button").addEventListener("click", function() {
+            const menu = document.getElementById("mobile-menu");
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    menu.classList.add('opacity-100', 'scale-100');
+                    menu.classList.remove('opacity-0', 'scale-95');
+                }, 10);
+            } else {
+                menu.classList.add('opacity-0', 'scale-95');
+                menu.classList.remove('opacity-100', 'scale-100');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+            }
+        });
+
+        // Service Definitions
+        const services = {
+            general: { title: "General Stain Removal" },
+            toilet: { title: "Toilet Bowl Stain Removal" },
+            tiles: { title: "Tiles Stain Removal" },
+            sinks: { title: "Sink Basin Stain Removal" },
+            urinals: { title: "Urinal Stain Removal" },
+            bathtubs: { title: "Bathtub Stain Removal" }
+        };
+
+        // Booking Simulation (using localStorage for demo)
+        const timeSlots = ["10:00", "12:00", "14:00", "16:00"];
+        let bookings = JSON.parse(localStorage.getItem('bookings')) || {
+            "2025-4-23": ["10:00"] // Example: April 23, 2025, 10:00 AM booked
+        };
+
+        // Get Elements
+        const cardTitle = document.getElementById('card-title');
+        const cardDescription = document.getElementById('card-description');
+        const cardButton = document.getElementById('card-button');
+        const calendarBody = document.getElementById('calendarBody');
+        const monthYear = document.getElementById('monthYear');
+        const prevMonth = document.getElementById('prevMonth');
+        const nextMonth = document.getElementById('nextMonth');
+        const calendarStatus = document.getElementById('calendar-status');
+        const timeSlotSelect = document.getElementById('timeSlot');
+        const bookService = document.getElementById('bookService');
+        let currentDate = new Date();
+        let selectedDate = null;
+        let selectedService = null;
+
+        // Check URL for Service
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceParam = urlParams.get('service');
+        if (serviceParam && services[serviceParam]) {
+            selectedService = serviceParam;
+            cardTitle.textContent = `Selected Service: ${services[selectedService].title}`;
+            cardDescription.textContent = `You have chosen ${services[selectedService].title}. Click below to change or unselect your service.`;
+            cardButton.textContent = 'Change Service';
+            cardButton.href = 'index.html#services';
+            cardButton.onclick = () => {
+                window.location.href = 'book.html'; // Clear service by redirecting without param
+            };
+        }
+
+        // Calendar Functionality
+        function generateCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDate = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+
+            monthYear.textContent = `${currentDate.toLocaleString('default', { month: 'long' })} ${year}`;
+
+            let calendarHTML = '';
+            let date = 1;
+
+            for (let i = 0; i < 6; i++) {
+                calendarHTML += '<tr>';
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < firstDay) {
+                        calendarHTML += '<td class="disabled"></td>';
+                    } else if (date > lastDate) {
+                        calendarHTML += '<td class="disabled"></td>';
+                    } else {
+                        const dateStr = `${year}-${month + 1}-${date}`;
+                        const isPast = new Date(year, month, date) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                        const isSelected = selectedDate && selectedDate.getDate() === date && selectedDate.getMonth() === month && selectedDate.getFullYear() === year;
+                        const isFullyBooked = bookings[dateStr] && bookings[dateStr].length >= timeSlots.length;
+                        const classNames = [
+                            isPast ? 'disabled' : '',
+                            isSelected ? 'selected' : '',
+                            isFullyBooked && !isPast ? 'fully-booked' : ''
+                        ].filter(c => c).join(' ');
+                        calendarHTML += `<td class="${classNames}" data-date="${dateStr}">${date}</td>`;
+                        date++;
+                    }
+                }
+                calendarHTML += '</tr>';
+            }
+
+            calendarBody.innerHTML = calendarHTML;
+
+            // Update Calendar Status
+            const fullyBookedDays = Object.keys(bookings).filter(date => bookings[date].length >= timeSlots.length && new Date(date) >= today);
+            calendarStatus.textContent = fullyBookedDays.length > 0 ? 'Red days are fully booked.' : 'Select a date and time slot below.';
+
+            // Add Click Events
+            document.querySelectorAll('td:not(.disabled):not(.fully-booked)').forEach(cell => {
+                cell.addEventListener('click', () => {
+                    document.querySelectorAll('td.selected').forEach(c => c.classList.remove('selected'));
+                    cell.classList.add('selected');
+                    const [y, m, d] = cell.dataset.date.split('-');
+                    selectedDate = new Date(y, m - 1, d);
+                    updateTimeSlots(cell.dataset.date);
+                });
+            });
+        }
+
+        function updateTimeSlots(dateStr) {
+            timeSlotSelect.innerHTML = '';
+            const bookedSlots = bookings[dateStr] || [];
+            const availableSlots = timeSlots.filter(slot => !bookedSlots.includes(slot));
+            
+            if (availableSlots.length === 0) {
+                timeSlotSelect.innerHTML = '<option value="">No available time slots</option>';
+                timeSlotSelect.disabled = true;
+                bookService.disabled = true;
+            } else {
+                availableSlots.forEach(slot => {
+                    const option = document.createElement('option');
+                    option.value = slot;
+                    option.textContent = slot;
+                    timeSlotSelect.appendChild(option);
+                });
+                timeSlotSelect.disabled = false;
+                bookService.disabled = !selectedService;
+            }
+        }
+
+        prevMonth.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            generateCalendar();
+        });
+
+        nextMonth.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            generateCalendar();
+        });
+
+        bookService.addEventListener('click', () => {
+            if (!selectedService) {
+                alert('Please select a service first.');
+                return;
+            }
+            if (!selectedDate || !timeSlotSelect.value) {
+                alert('Please select a date and time slot.');
+                return;
+            }
+
+            const dateStr = `${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-${selectedDate.getDate()}`;
+            bookings[dateStr] = bookings[dateStr] || [];
+            bookings[dateStr].push(timeSlotSelect.value);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+
+            const whatsappMessage = `I'm interested in booking ${services[selectedService].title} on ${selectedDate.toLocaleDateString()} at ${timeSlotSelect.value}`;
+            window.location.href = `https://wa.me/254797661210?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Reset selections
+            selectedDate = null;
+            timeSlotSelect.innerHTML = '<option value="">Select a date first</option>';
+            timeSlotSelect.disabled = true;
+            bookService.disabled = true;
+            generateCalendar();
+        });
+
+        // Initialize
+        generateCalendar();
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
