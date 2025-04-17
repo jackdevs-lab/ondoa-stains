@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ondoa Stains | Our Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:wght@400;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .lobster-font {
+            font-family: 'Lobster', cursive;
+        }
+        .playfair-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .roboto-condensed {
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(13, 181, 164, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 1rem;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .nav-link:hover {
+            color: #0DB5A4;
+            transform: scale(1.05);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .cta-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .cta-buttons a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 0.75rem;
+            background-color: #F15F23;
+            color: white;
+            font-size: 0.875rem;
+            font-family: 'Roboto Condensed', sans-serif;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .cta-buttons a:hover {
+            background-color: #0DB5A4;
+        }
+        @media (max-width: 768px) {
+            .glass-card {
+                padding: 0.75rem;
+                min-height: auto;
+            }
+            .glass-card:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .nav-link:hover {
+                transform: none;
+            }
+            .glass-card h2 {
+                font-size: 1.75rem;
+            }
+            .glass-card h3 {
+                font-size: 1rem;
+            }
+            .glass-card ul, .glass-card p {
+                font-size: 0.85rem;
+            }
+            .cta-buttons a {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.75rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .glass-card h2 {
+                font-size: 1.5rem;
+            }
+            .glass-card h3 {
+                font-size: 0.9rem;
+            }
+            .glass-card ul, .glass-card p {
+                font-size: 0.8rem;
+            }
+            .cta-buttons a {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
+            <div class="flex flex-col items-start">
+                <a href="index.html">
+                <p class="lobster-font text-[#F15F23] text-3xl sm:text-4xl">Ondoa Stains</p>
+                <p class="text-gray-600 text-base sm:text-lg playfair-font">Professional Stain Removal Services</p></a>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <ul class="flex space-x-6 text-[#F15F23] roboto-condensed text-base">
+                    <li><a href="about.html" class="nav-link block py-2 px-3">About</a></li>
+                    <li><a href="services.html" class="nav-link block py-2 px-3 font-bold text-[#0DB5A4]">Services</a></li>
+                    <li><a href="contact.html" class="nav-link block py-2 px-3">Contact</a></li>
+                </ul>
+            </div>
+            <button id="mobile-menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-200">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div id="mobile-menu" class="hidden absolute right-4 top-16 bg-white shadow-lg w-48 rounded-lg py-2 z-50">
+                <ul class="text-gray-700 roboto-condensed text-base">
+                    <li><a href="about.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">About</a></li>
+                    <li><a href="services.html" class="block px-4 py-2 bg-teal-100 text-[#0DB5A4] font-bold">Services</a></li>
+                    <li><a href="contact.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Section -->
+    <div class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-teal-50 to-white pt-16">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Our Stain Removal Services</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-broom text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=general" class="underline hover:text-[#0DB5A4] transition-colors duration-300">General Stain Removal</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Comprehensive stain removal for your entire bathroom.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-toilet text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=toilet" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Toilet Bowl Stain Removal</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We leave your toilet bowl stain-free and germ-free.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-th-large text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=tiles" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Tiles Stain Removal</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Our experts restore the shine to your tiles.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-sink text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=sinks" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Sink Basin Stain Removal</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We stain remove your sink to a sparkling finish.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-restroom text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=urinals" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Urinal Stain Removal</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We keep your restrooms fresh and hygienic.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-bath text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
+                        <a href="service.html?service=bathtubs" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Bathtub Stain Removal</a>
+                    </h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Our team ensures your bathtub is spotless and hygienic.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Where We Work Section -->
+    <div class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-teal-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Where We Work</h2>
+            <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                <i class="fas fa-map-marker-alt text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font mb-3">We Currently Serve:</h3>
+                <ul class="text-gray-600 roboto-condensed text-sm sm:text-base list-none space-y-3">
+                    <li><i class="fas fa-map-marker-alt text-[#F15F23] mr-2"></i>Nairobi & Surrounding Areas</li>
+                    <li><i class="fas fa-map-marker-alt text-[#F15F23] mr-2"></i>Kiambu, Machakos, Kajiado</li>
+                    <li><i class="fas fa-map-marker-alt text-[#F15F23] mr-2"></i>Other regions on request – <a href="tel:+254714764260" class="underline hover:text-[#0DB5A4]">Call to confirm availability!</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call-to-Action Section -->
+    <div class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-teal-50 to-white">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-[#0DB5A4] mb-6 playfair-font">Tired of Stubborn Stains?</h2>
+            <div class="cta-buttons">
+                <a href="tel:+254714764260" class="inline-flex items-center">
+                    <i class="fas fa-phone-alt mr-2"></i> Call Us
+                </a>
+                <a href="book.html" class="inline-flex items-center">
+                    <i class="fas fa-calendar-alt mr-2"></i> Book Online
+                </a>
+                <a href="mailto:ngarisha@empowerntlighthouse.online?subject=Free%20Quote%20Request" class="inline-flex items-center">
+                    <i class="fas fa-envelope mr-2"></i> Get a Free Quote
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById("mobile-menu-button").addEventListener("click", function() {
+            const menu = document.getElementById("mobile-menu");
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    menu.classList.add('opacity-100', 'scale-100');
+                    menu.classList.remove('opacity-0', 'scale-95');
+                }, 10);
+            } else {
+                menu.classList.add('opacity-0', 'scale-95');
+                menu.classList.remove('opacity-100', 'scale-100');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+            }
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

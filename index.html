@@ -54,7 +54,42 @@
             border-radius: 1rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        /* Increase video size on desktop screens */
+        .who-we-serve {
+            padding: 2rem 1rem;
+            background: linear-gradient(to bottom, #ffffff, #e6f4f1);
+            text-align: center;
+        }
+        .who-we-serve-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(13, 181, 164, 0.3);
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .who-we-serve-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .who-we-serve-buttons a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #F15F23;
+            color: white;
+            font-size: 0.875rem;
+            font-family: 'Roboto Condensed', sans-serif;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .who-we-serve-buttons a:hover {
+            background-color: #0DB5A4;
+        }
         @media (min-width: 1024px) {
             .video-section video {
                 max-width: 85%;
@@ -103,7 +138,37 @@
             background: rgba(0, 0, 0, 0.6);
             z-index: 0;
         }
-        /* Mobile-Friendly Adjustments */
+        .faq-item {
+            cursor: pointer;
+        }
+        .faq-answer {
+            display: none;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .landing-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .landing-buttons a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #F15F23;
+            color: white;
+            font-size: 0.875rem;
+            font-family: 'Roboto Condensed', sans-serif;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .landing-buttons a:hover {
+            background-color: #0DB5A4;
+        }
         @media (max-width: 768px) {
             .landing {
                 height: 70vh;
@@ -117,12 +182,8 @@
             .overlay p {
                 font-size: 1rem;
             }
-            .overlay a {
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
-            }
             .glass-card {
-                padding: 1rem;
+                padding: 0.75rem;
                 min-height: auto;
             }
             .glass-card:hover {
@@ -148,6 +209,36 @@
             .video-section video {
                 max-width: 100%;
             }
+            .landing-buttons {
+                gap: 0.75rem;
+            }
+            .landing-buttons a {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.75rem;
+            }
+            .who-we-serve {
+                padding: 1.5rem 0.5rem;
+            }
+            .who-we-serve h2 {
+                font-size: 1.75rem;
+            }
+            .who-we-serve-card {
+                padding: 0.75rem;
+                max-width: 90%;
+            }
+            .who-we-serve-card p {
+                font-size: 0.85rem;
+            }
+            .who-we-serve-card ul {
+                font-size: 0.8rem;
+            }
+            .who-we-serve-buttons {
+                gap: 0.75rem;
+            }
+            .who-we-serve-buttons a {
+                padding: 0.4rem 0.75rem;
+                font-size: 0.75rem;
+            }
         }
         @media (max-width: 640px) {
             .landing {
@@ -160,13 +251,37 @@
                 font-size: 0.9rem;
             }
             .glass-card h3 {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             .glass-card p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .video-section h2 {
                 font-size: 1.5rem;
+            }
+            .landing-buttons {
+                gap: 0.5rem;
+            }
+            .landing-buttons a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.7rem;
+            }
+            .who-we-serve h2 {
+                font-size: 1.5rem;
+            }
+            .who-we-serve-card {
+                padding: 0.5rem;
+                max-width: 85%;
+            }
+            .who-we-serve-card p {
+                font-size: 0.8rem;
+            }
+            .who-we-serve-card ul {
+                font-size: 0.75rem;
+            }
+            .who-we-serve-buttons a {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -182,7 +297,7 @@
             <div class="hidden md:flex items-center space-x-6">
                 <ul class="flex space-x-6 text-[#F15F23] roboto-condensed text-base">
                     <li><a href="about.html" class="nav-link block py-2 px-3">About</a></li>
-                    <li><a href="#services" class="nav-link block py-2 px-3">Services</a></li>
+                    <li><a href="services.html" class="nav-link block py-2 px-3">Services</a></li>
                     <li><a href="contact.html" class="nav-link block py-2 px-3">Contact</a></li>
                 </ul>
             </div>
@@ -195,7 +310,7 @@
             <div id="mobile-menu" class="hidden absolute right-4 top-16 bg-white shadow-lg w-48 rounded-lg py-2 z-50">
                 <ul class="text-gray-700 roboto-condensed text-base">
                     <li><a href="about.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">About</a></li>
-                    <li><a href="#services" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Services</a></li>
+                    <li><a href="services.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Services</a></li>
                     <li><a href="contact.html" class="block px-4 py-2 hover:bg-teal-100 hover:text-[#0DB5A4]">Contact</a></li>
                 </ul>
             </div>
@@ -208,7 +323,14 @@
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0DB5A4] playfair-font">Ondoa Stains Cleaning Services</h1>
             <p class="text-lg sm:text-xl md:text-2xl text-[#F15F23] mt-4 playfair-font">Unleashing the Sparkles ✨</p>
             <p class="text-base sm:text-lg text-white mt-2 roboto-condensed">We remove Stubborn stains from the Toilet bowls, Sinks, Bathtubs & Tiles</p>
-            <a href="#services" class="mt-6 inline-block px-4 sm:px-6 py-2 sm:py-3 bg-[#F15F23] text-white roboto-condensed rounded-lg hover:bg-[#0DB5A4] transition-colors duration-300">Book a service</a>
+            <div class="landing-buttons">
+                <a href="book.html" class="inline-flex items-center">
+                    <i class="fas fa-calendar-alt mr-1"></i> Book Online
+                </a>
+                <a href="mailto:ngarisha@empowerntlighthouse.online?subject=Free%20Quote%20Request" class="inline-flex items-center">
+                    <i class="fas fa-envelope mr-1"></i> Get a Free Quote
+                </a>
+            </div>
         </div>
     </div>
 
@@ -222,81 +344,55 @@
     </div>
 
     <!-- How It Works Section -->
-   <!-- How It Works Section -->
-<div class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-teal-50 to-white">
-    <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Step-by-Step Guide to How We Work</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
-                <a href="book.html">
-                    <i class="fas fa-calendar-alt text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">1. Book Your Service</h3>
-                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Schedule a stain removal at a time that suits you.</p>
-                </a>
-                <a href="#services" class="mt-4 inline-block px-4 py-2 bg-[#F15F23] text-white roboto-condensed rounded-lg hover:bg-[#0DB5A4] transition-colors duration-300">View Services</a>
-            </div>
-            <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
-                <i class="fas fa-broom text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
-                <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">2. We Clean Your Space</h3>
-                <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Our team arrives and delivers a thorough stain removal.</p>
-            </div>
-            <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
-                <i class="fas fa-check-circle text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
-                <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">3. Enjoy the Results</h3>
-                <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Relax in a spotless, fresh environment.</p>
+    <div class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-teal-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Step-by-Step Guide to How We Work</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <a href="book.html">
+                        <i class="fas fa-calendar-alt text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                        <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">1. Book Your Service</h3>
+                        <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Schedule a stain removal at a time that suits you.</p>
+                    </a>
+                    <a href="services.html" class="mt-4 inline-block px-4 py-2 bg-[#F15F23] text-white roboto-condensed rounded-lg hover:bg-[#0DB5A4] transition-colors duration-300">View Services</a>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-search-dollar text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">2. Free Assessment & Quotation</h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We request photos to assess the stain levels but for larger jobs & commercial spaces, we schedule a quick site visit then share a conclusive quotation.</p>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
+                    <i class="fas fa-broom text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">3. On-Site Service</h3>
+                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Our team arrives fully equipped to restore your stained surfaces. We inspect the cleaned area with you to ensure satisfaction</p>
+                    <button onclick="window.location.href='services.html'" class="mt-4 bg-[#F15F23] text-white py-2 px-4 rounded-lg hover:bg-[#d94f1d] transition-colors">
+                        Services
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-    <!-- Services Section -->
-    <div id="services" class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-teal-50 to-white">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[#0DB5A4] mb-8 sm:mb-12 playfair-font">Our Stain Removal Services</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
-                    <i class="fas fa-broom text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
-                        <a href="service.html?service=general" class="underline hover:text-[#0DB5A4] transition-colors duration-300">General Stain Removal</a>
-                    </h3>
-                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Comprehensive stain removal for your entire bathroom.</p>
-                </div>
-                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
-                    <i class="fas fa-toilet text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
-                        <a href="service.html?service=toilet" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Toilet Bowl Stain Removal</a>
-                    </h3>
-                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We leave your toilet bowl stain-free and germ-free.</p>
-                </div>
-                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
-                    <i class="fas fa-th-large text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
-                        <a href="service.html?service=tiles" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Tiles Stain Removal</a>
-                    </h3>
-                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Our experts restore the shine to your tiles.</p>
-                </div>
-                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
-                    <i class="fas fa-sink text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
-                        <a href="service.html?service=sinks" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Sink Basin Stain Removal</a>
-                    </h3>
-                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We stain remove your sink to a sparkling finish.</p>
-                </div>
-                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
-                    <i class="fas fa-restroom text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
-                        <a href="service.html?service=urinals" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Urinal Stain Removal</a>
-                    </h3>
-                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">We keep your restrooms fresh and hygienic.</p>
-                </div>
-                <div class="glass-card p-4 sm:p-6 rounded-xl text-center">
-                    <i class="fas fa-bath text-3xl sm:text-4xl text-[#F15F23] mb-4"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font">
-                        <a href="service.html?service=bathtubs" class="underline hover:text-[#0DB5A4] transition-colors duration-300">Bathtub Stain Removal</a>
-                    </h3>
-                    <p class="text-gray-600 mt-2 roboto-condensed text-sm sm:text-base">Our team ensures your bathtub is spotless and hygienic.</p>
-                </div>
-            </div>
+    <!-- Who We Serve Section -->
+    <div class="who-we-serve">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center text-[#0DB5A4] mb-6 playfair-font">Who We Serve 🏘️</h2>
+        <div class="who-we-serve-card">
+            <p class="text-gray-600 roboto-condensed text-sm sm:text-base mb-3">We provide stain removal services for:</p>
+            <ul class="text-gray-600 roboto-condensed text-sm sm:text-base list-disc list-inside">
+                <li>Homes & Apartments</li>
+                <li>Offices & Commercial Buildings</li>
+                <li>Restaurants, Hotels & Lodges</li>
+                <li>Schools, Churches & Mosques</li>
+                <li>Medical Facilities</li>
+            </ul>
+        </div>
+        <div class="who-we-serve-buttons">
+            <a href="book.html" class="inline-flex items-center">
+                <i class="fas fa-calendar-alt mr-1"></i> Book Online
+            </a>
+            <a href="tel:+254714764260" class="inline-flex items-center">
+                <i class="fas fa-phone-alt mr-1"></i> Call Us
+            </a>
         </div>
     </div>
 
@@ -426,6 +522,11 @@
                     menu.classList.add('hidden');
                 }, 300);
             }
+        });
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
         });
     </script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

@@ -33,6 +33,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 1rem;
         }
         .glass-card:hover {
             transform: translateY(-5px);
@@ -46,8 +47,9 @@
         .about-section {
             position: relative;
             width: 100%;
-            height: 70vh;
+            min-height: 80vh;
             background: url('images/tile4.jpg') center/cover no-repeat;
+            padding: 2rem 1rem;
         }
         .about-section::before {
             content: '';
@@ -64,11 +66,10 @@
             z-index: 2;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100%;
             text-align: center;
-            padding: 2rem;
+            max-width: 4xl;
+            margin: 0 auto;
         }
         .about-card {
             background: rgba(255, 255, 255, 0.95);
@@ -76,45 +77,108 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 1rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .about-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
+        .faq-item {
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+        }
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #0DB5A4;
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            font-size: 0.85rem;
+            color: #333;
+            padding: 0 0.5rem;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 100px;
+            opacity: 1;
+            padding: 0.5rem 0.5rem;
+        }
         /* Mobile-Friendly Adjustments */
         @media (max-width: 768px) {
             .about-section {
-                height: 80vh; /* Slightly taller on mobile to accommodate content */
-                background-position: center;
+                min-height: 100vh;
+                padding: 1rem 0.5rem;
             }
             .about-content {
-                padding: 1rem; /* Reduce padding on mobile */
+                padding: 0.5rem;
             }
             .about-card {
-                padding: 1rem; /* Reduce padding on mobile */
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            .about-card h2 {
+                font-size: 1.25rem;
+            }
+            .about-card ul, .about-card p {
+                font-size: 0.85rem;
+            }
+            .faq-question {
+                font-size: 0.8rem;
+            }
+            .faq-answer {
+                font-size: 0.75rem;
+            }
+            .faq-item.active .faq-answer {
+                max-height: 150px;
             }
             .about-card:hover {
-                transform: none; /* Disable hover effect on mobile */
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Keep default shadow */
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             }
             .nav-link:hover {
-                transform: none; /* Disable scale effect on mobile */
+                transform: none;
             }
         }
         @media (max-width: 640px) {
             .about-section {
-                height: 90vh; /* Even taller on smaller screens to fit content */
+                min-height: 120vh;
             }
             .about-content h1 {
-                font-size: 2.5rem; /* Smaller heading on mobile */
+                font-size: 2rem;
             }
             .about-card h2 {
-                font-size: 1.25rem; /* Smaller subheading */
+                font-size: 1rem;
             }
-            .about-card p {
-                font-size: 0.9rem; /* Smaller text */
+            .about-card ul, .about-card p {
+                font-size: 0.75rem;
+            }
+            .faq-question {
+                font-size: 0.75rem;
+            }
+            .faq-answer {
+                font-size: 0.7rem;
+            }
+            .faq-item {
+                margin-bottom: 0.5rem;
             }
         }
     </style>
@@ -155,34 +219,60 @@
     <!-- About Us Section -->
     <section class="about-section pt-16">
         <div class="about-content">
-            <h1 class="text-[#0DB5A4] text-4xl sm:text-5xl font-bold playfair-font mb-6 sm:mb-8">About Us</h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl px-4 sm:px-6">
-                <!-- First Column -->
+            <h1 class="text-[#0DB5A4] text-3xl sm:text-4xl font-bold playfair-font mb-4 sm:mb-6">Why Choose Us</h1>
+            <div class="grid grid-cols-1 max-w-3xl px-4 sm:px-6">
                 <div class="about-card text-gray-700">
-                    <h2 class="text-xl sm:text-2xl font-semibold text-[#F15F23] playfair-font">Who We Are</h2>
-                    <p class="text-sm sm:text-lg mt-3 sm:mt-4 roboto-condensed">
-                        At Ondoa Stains Cleaning Services, we specialize in professional bathroom cleaning for schools, corporate offices, homes, businesses, events, and any space with a restroom.
-                    </p>
+                    <ul class="text-sm sm:text-base roboto-condensed list-none">
+                        <li class="flex items-center mb-2">
+                            <span class="text-[#F15F23] mr-2">🌿</span> Eco-friendly, non-damaging methods
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <span class="text-[#F15F23] mr-2">⚙️</span> Specialized in hard water stain removal
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <span class="text-[#F15F23] mr-2">⏱️</span> Fast, same-day service options
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <span class="text-[#F15F23] mr-2">💸</span> Affordable, transparent pricing
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-[#F15F23] mr-2">🧼</span> Guaranteed clean or your money back
+                        </li>
+                    </ul>
                 </div>
-                <!-- Second Column -->
                 <div class="about-card text-gray-700">
-                    <h2 class="text-xl sm:text-2xl font-semibold text-[#F15F23] playfair-font">Our Mission</h2>
-                    <p class="text-sm sm:text-lg mt-3 sm:mt-4 roboto-condensed">
-                        Our mission is to provide exceptional and hygienic bathroom cleaning services that promote cleanliness, health, and comfort in every space.
-                    </p>
+                    <h2 class="text-lg sm:text-xl font-semibold text-[#F15F23] playfair-font mb-3">❓ Frequently Asked Questions</h2>
+                    <div class="faq-item">
+                        <div class="faq-question roboto-condensed">
+                            Is your cleaning process safe for old toilets or tiles? <span class="text-[#0DB5A4]"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer roboto-condensed">
+                            Yes, our eco-friendly methods are safe for all surfaces, including older fixtures.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question roboto-condensed">
+                            How long does it take per item? <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer roboto-condensed">
+                            Approximately 30–60 minutes per item, depending on the stain severity.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question roboto-condensed">
+                            Do I need to supply water, tools, or materials? <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer roboto-condensed">
+                            No, we bring everything needed for the job.
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <!-- Social Media Icons -->
-            <div class="flex justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 text-3xl sm:text-4xl">
-                <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-[#0DB5A4] hover:text-[#F15F23] transition-colors duration-300"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </section>
 
     <script>
+        // Mobile menu toggle
         const menuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -200,6 +290,26 @@
                     mobileMenu.classList.add('hidden');
                 }, 300);
             }
+        });
+
+        // FAQ dropdown toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    const answer = i.querySelector('.faq-answer');
+                    answer.style.maxHeight = '0';
+                    answer.style.opacity = '0';
+                });
+                if (!isActive) {
+                    item.classList.add('active');
+                    const answer = item.querySelector('.faq-answer');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    answer.style.opacity = '1';
+                }
+            });
         });
     </script>
 </body>
